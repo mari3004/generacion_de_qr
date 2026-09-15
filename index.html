@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generador de QR</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="card">
+    <h1>Generador de código QR</h1>
+    <p class="subtitle">Creá un QR que lleve a tu link</p>
+
+    <form id="qr-form">
+      <label for="url-input">Link de destino</label>
+      <input
+        type="url"
+        id="url-input"
+        placeholder="https://ejemplo.com"
+        value="https://example.com"
+        required
+      />
+
+      <div class="row">
+        <div class="field">
+          <label for="size-input">Tamaño</label>
+          <select id="size-input">
+            <option value="200">200 x 200</option>
+            <option value="300" selected>300 x 300</option>
+            <option value="500">500 x 500</option>
+            <option value="800">800 x 800</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="color-input">Color</label>
+          <input type="color" id="color-input" value="#000000" />
+        </div>
+      </div>
+
+      <button type="submit">Generar QR</button>
+    </form>
+
+    <div id="qr-result" class="qr-result" hidden>
+      <div id="qr-canvas-wrap"></div>
+      <a id="download-link" class="download-btn" download="qr.png">Descargar PNG</a>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/lib/browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
