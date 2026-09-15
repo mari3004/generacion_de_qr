@@ -19,30 +19,21 @@ function generateQr() {
   const color = colorInput.value;
 
   canvasWrap.innerHTML = "";
-  const canvas = document.createElement("canvas");
-  canvasWrap.appendChild(canvas);
 
-  QRCode.toCanvas(
-    canvas,
+  new QRCode(canvasWrap, {
     text,
-    {
-      width: size,
-      margin: 2,
-      color: {
-        dark: color,
-        light: "#ffffff",
-      },
-    },
-    (error) => {
-      if (error) {
-        console.error(error);
-        alert("No se pudo generar el QR. Revisá el link ingresado.");
-        return;
-      }
-      downloadLink.href = canvas.toDataURL("image/png");
-      resultBox.hidden = false;
-    }
-  );
+    width: size,
+    height: size,
+    colorDark: color,
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H,
+  });
+
+  const canvas = canvasWrap.querySelector("canvas");
+  const img = canvasWrap.querySelector("img");
+  downloadLink.href = canvas ? canvas.toDataURL("image/png") : img.src;
+
+  resultBox.hidden = false;
 }
 
 // Genera un QR con los valores por defecto al cargar la página.
