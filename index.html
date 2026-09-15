@@ -41,13 +41,18 @@
       <button type="submit">Generar QR</button>
     </form>
 
+    <p id="error-msg" class="error-msg" hidden></p>
+
     <div id="qr-result" class="qr-result" hidden>
       <div id="qr-canvas-wrap"></div>
       <a id="download-link" class="download-btn" download="qr.png">Descargar PNG</a>
     </div>
   </main>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+    onerror="this.onerror=null; document.write('<script src=\'https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js\'><\/script>')"
+  ></script>
   <script src="script.js"></script>
 </body>
 </html>
